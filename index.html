@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNest | Library Catalogue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><span class="brand-icon">✦</span> BookNest</div>
+        <p class="nav-label">WORKSPACE</p>
+        <a class="nav-item active" href="#dashboard">▦ &nbsp; Dashboard</a>
+        <a class="nav-item" href="#catalogue">▤ &nbsp; Book Catalogue</a>
+        <div class="sidebar-bottom">
+            <div class="mini-icon">📚</div>
+            <strong>Your digital library</strong>
+            <p>Every book has a story.</p>
+        </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">LIBRARY MANAGEMENT SYSTEM</p>
+                <h1>Book Catalogue <span class="sparkle">✦</span></h1>
+                <p class="subtitle">Discover, organize and manage your collection.</p>
+            </div>
+            <div class="avatar">BN</div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="hero-tag">✦ YOUR READING SPACE</span>
+                <h2>A world of stories,<br>all in one place.</h2>
+                <p>Manage your books with a smart Binary Search Tree.</p>
+                <a href="#add-book" class="hero-button">＋ Add a new book</a>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="book-stack">
+                    <div class="book book-a"></div>
+                    <div class="book book-b"></div>
+                    <div class="book book-c"></div>
+                    <div class="book book-d"></div>
+                </div>
+                <div class="floating-star">✦</div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <article class="stat-card">
+                <div class="stat-icon purple">▤</div>
+                <p>Total Books</p>
+                <h3 id="totalBooks">0</h3>
+                <span>Books in your catalogue</span>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon pink">⌕</div>
+                <p>Search & Discover</p>
+                <h3>BST</h3>
+                <span>Search by unique Book ID</span>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon green">↕</div>
+                <p>Sorted Collection</p>
+                <h3>A → Z</h3>
+                <span>Displayed by Book ID order</span>
+            </article>
+        </section>
+
+        <section class="workspace">
+            <div class="panel form-panel" id="add-book">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">COLLECTION</p>
+                        <h2>Add a book</h2>
+                    </div>
+                    <span class="heading-icon">＋</span>
+                </div>
+                <form id="bookForm">
+                    <label for="bookId">Book ID</label>
+                    <input id="bookId" type="number" min="1"
+                           placeholder="e.g. 106" required>
+
+                    <label for="bookTitle">Book title</label>
+                    <input id="bookTitle" type="text"
+                           placeholder="Enter the book title" required>
+
+                    <label for="bookAuthor">Author name</label>
+                    <input id="bookAuthor" type="text"
+                           placeholder="Enter the author's name" required>
+
+                    <button class="primary-button" type="submit">
+                        ＋ Add to Catalogue
+                    </button>
+                </form>
+                <div class="notice">✦ Each Book ID must be unique.</div>
+            </div>
+
+            <div class="panel search-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">QUICK LOOKUP</p>
+                        <h2>Find your book</h2>
+                    </div>
+                    <span class="heading-icon">⌕</span>
+                </div>
+                <p class="helper">Search the collection using its Book ID.</p>
+                <form id="searchForm" class="search-form">
+                    <input id="searchId" type="number" min="1"
+                           placeholder="Enter Book ID..." required>
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+                <div id="searchResult" class="search-result">
+                    <div class="empty-symbol">⌕</div>
+                    <p>Your search result will appear here.</p>
+                </div>
+                <div class="delete-area">
+                    <span>Want to remove a book?</span>
+                    <button id="deleteButton" class="delete-button"
+                            type="button" disabled>Delete selected book</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel catalogue-panel" id="catalogue">
+            <div class="catalogue-header">
+                <div>
+                    <p class="eyebrow">YOUR COLLECTION</p>
+                    <h2>All books <span class="count" id="bookCount">0</span></h2>
+                    <p class="helper">Books are arranged in ascending Book ID order.</p>
+                </div>
+                <button id="refreshButton" class="refresh-button" type="button">
+                    ↻ Refresh
+                </button>
+            </div>
+            <div id="bookGrid" class="book-grid"></div>
+            <div id="emptyState" class="empty-state" hidden>
+                <div>📚</div>
+                <h3>Your shelves are waiting!</h3>
+                <p>Add your first book to begin building the catalogue.</p>
+            </div>
+        </section>
+
+        <footer>
+            <span>✦ BookNest Library System</span>
+            <span>Powered by Binary Search Tree · Java</span>
+        </footer>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+</body>
+</html>
